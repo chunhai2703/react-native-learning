@@ -1,61 +1,57 @@
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 export default function App() {
-  const [count, setCount] = useState<number>(0);
-  const [name, setName] = useState<string>("");
-  const [age, setAge] = useState<number>(0);
+  const [students, setStudents] = useState([
+    { id: 1, name: "Nguyen Van A", age: 20 },
+    { id: 2, name: "Nguyen Van B", age: 21 },
+    { id: 3, name: "Nguyen Van C", age: 22 },
+    { id: 4, name: "Nguyen Van D", age: 23 },
+    { id: 5, name: "Nguyen Van E", age: 24 },
+    { id: 6, name: "Nguyen Van F", age: 25 },
+    { id: 7, name: "Nguyen Van G", age: 26 },
+    { id: 8, name: "Nguyen Van H", age: 27 },
+    { id: 9, name: "Nguyen Van I", age: 28 },
+    { id: 10, name: "Nguyen Van J", age: 29 },
+  ]);
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={{ fontSize: 40, fontWeight: "600" }}>Name: {name} </Text>
-        <TextInput
-          multiline
-          onChangeText={(value) => setName(value)}
-          style={{
-            borderWidth: 1,
-            borderColor: "green",
-            width: 200,
-            padding: 15,
-          }}
-        ></TextInput>
-      </View>
-
-      <View>
-        <Text style={{ fontSize: 40, fontWeight: "600" }}>Age: {age} </Text>
-        <TextInput
-          multiline
-          onChangeText={(value) => setAge(+value)}
-          style={{
-            borderWidth: 1,
-            borderColor: "green",
-            width: 200,
-            padding: 15,
-          }}
-          keyboardType="numeric"
-          maxLength={2}
-        ></TextInput>
-      </View>
-
-      <Text style={{ fontSize: 40, fontWeight: "600" }}>count = {count}</Text>
-
-      <View>
-        <Button
-          color={"red"}
-          title="Increase"
-          onPress={() => setCount(count + 1)}
-        />
-      </View>
+      <Text style={{ fontSize: 60 }}>Hello World</Text>
+      <ScrollView>
+        {students.map((student) => {
+          return (
+            <View
+              key={student.id}
+              style={{
+                padding: 30,
+                backgroundColor: "orange",
+                marginBottom: 30,
+              }}
+            >
+              <Text>{student.name}</Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 50,
+    paddingHorizontal: 20,
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
