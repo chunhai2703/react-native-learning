@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   Button,
+  FlatList,
   ScrollView,
   StyleSheet,
   Text,
@@ -24,8 +25,26 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 60 }}>Hello World</Text>
-      <ScrollView>
+      <Text style={{ fontSize: 60 }}>Oceanic</Text>
+      <FlatList
+        data={students}
+        keyExtractor={(item) => item.id + ""}
+        renderItem={({ item }) => {
+          return (
+            <View
+              style={{
+                padding: 30,
+                backgroundColor: "orange",
+                marginBottom: 30,
+                marginHorizontal: 30,
+              }}
+            >
+              <Text>{item.name}</Text>
+            </View>
+          );
+        }}
+      />
+      {/* <ScrollView>
         {students.map((student) => {
           return (
             <View
@@ -40,7 +59,7 @@ export default function App() {
             </View>
           );
         })}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
