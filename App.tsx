@@ -13,6 +13,8 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import FlexBox from "./components/flexbox";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 interface ITodo {
   id: number;
@@ -54,7 +56,7 @@ export default function App() {
         <Text style={styles.header}>Todo App</Text>
 
         {/* form */}
-        <View style={styles.body}>
+        <View style={styles.form}>
           <TextInput
             value={todo}
             style={styles.todoInput}
@@ -64,7 +66,7 @@ export default function App() {
         </View>
 
         {/* list todo */}
-        <View style={styles.body}>
+        <View style={styles.todo}>
           <FlatList
             data={listTodo}
             keyExtractor={(item) => item.id + ""}
@@ -72,9 +74,21 @@ export default function App() {
               return (
                 <Pressable
                   style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1.0 }]}
-                  onPress={() => handleDeleteTodo(item.id)}
+                  // onPress={() => handleDeleteTodo(item.id)}
                 >
-                  <Text style={styles.todoItem}>{item.name}</Text>
+                  <View style={styles.groupTodo}>
+                    <Text style={styles.todoItem}>{item.name}</Text>
+                    <Pressable
+                      style={({ pressed }) => [
+                        { opacity: pressed ? 0.5 : 1.0 },
+                      ]}
+                      onPress={() => handleDeleteTodo(item.id)}
+                    >
+                      <Text>
+                        <AntDesign name="close" size={24} color="red" />
+                      </Text>
+                    </Pressable>
+                  </View>
                 </Pressable>
               );
             }}
@@ -90,8 +104,6 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     flex: 1,
     backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
   },
   header: {
     backgroundColor: "orange",
@@ -99,6 +111,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 60,
   },
+
+  form: {
+    // flex: 2,
+    marginBottom: 20,
+  },
+  todo: {
+    flex: 1,
+  },
+
   body: {
     paddingHorizontal: 10,
     marginBottom: 20,
@@ -109,11 +130,20 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 15,
   },
-  todoItem: {
-    padding: 10,
-    fontSize: 20,
+
+  groupTodo: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     borderWidth: 1,
     borderStyle: "dashed",
     marginBottom: 15,
+    marginHorizontal: 15,
+    padding: 15,
+  },
+  todoItem: {
+    // padding: 10,
+    fontSize: 20,
+    // marginBottom: 20,
   },
 });
