@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     fontFamily: OPENSANS_REGULAR,
   },
   reviewContent: {
+    padding: 15,
     marginTop: 40,
     marginHorizontal: 20,
     flex: 1,
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "white",
     borderRadius: 10,
-    maxHeight: 240,
+    maxHeight: 270,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

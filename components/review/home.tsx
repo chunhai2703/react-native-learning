@@ -19,7 +19,7 @@ interface IReview {
 const styles = StyleSheet.create({
   reviewItem: {
     padding: 15,
-    backgroundColor: "#ADD8E6",
+    backgroundColor: "#73d2f1ff",
     margin: 15,
   },
 });
