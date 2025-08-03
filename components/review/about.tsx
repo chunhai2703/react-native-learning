@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { globalStyles } from "../../utils/const";
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -18,6 +19,7 @@ const styles = StyleSheet.create({
 const AboutScreen = () => {
   return (
     <View style={styles.container}>
+      
       <Text style={[styles.about, globalStyles.globalFonts]}>
         About Review App
       </Text>
