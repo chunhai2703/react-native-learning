@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 import { OPENSANS_REGULAR } from "../../utils/const";
 import {
   NavigationProp,
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "white",
     borderRadius: 10,
-    maxHeight: 270,
+    maxHeight: 400,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -47,7 +47,23 @@ const DetailScreen = () => {
         <Text style={styles.reviewText}>
           Mô tả: {route.params?.description}
         </Text>
-        <Text style={styles.reviewText}>Đánh giá: {route.params?.star} 🌟</Text>
+        <Text style={styles.reviewText}>
+          Đánh giá: {route.params?.star}{" "}
+          {route.params?.star === 1
+            ? "🌟"
+            : route.params?.star === 2
+            ? "🌟🌟"
+            : route.params?.star === 3
+            ? "🌟🌟🌟"
+            : route.params?.star === 4
+            ? "🌟🌟🌟🌟"
+            : "🌟🌟🌟🌟🌟"}
+          {/* <Image
+            style={{ width: 50, height: 50 }}
+            source={require("../../assets/images/star.png")}
+          /> */}
+        </Text>
+
         <Button
           title="Go to Home"
           onPress={() => navigation.navigate("home")}

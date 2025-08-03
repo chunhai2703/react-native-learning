@@ -9,12 +9,12 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingHorizontal: 5,
     paddingVertical: 10,
-    paddingTop: 40,
+    // paddingTop: 40,
     alignItems: "center",
   },
   headerText: {
-    fontSize: 20,
-    width: "100%",
+    flex: 1,
+    fontSize: 25,
     textAlign: "center",
   },
 });
