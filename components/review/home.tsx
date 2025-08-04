@@ -11,7 +11,7 @@ import {
 import CreateModal from "./create.modal";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-interface IReview {
+export interface IReview {
   id: number;
   title: string;
   description: string;
@@ -23,6 +23,10 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: "#73d2f1ff",
     margin: 15,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderRadius: 5,
+    
   },
 });
 const HomeScreen = (props: any) => {
@@ -42,6 +46,14 @@ const HomeScreen = (props: any) => {
     },
   ]);
   const [modalVisible, setModalVisible] = useState(false);
+  const addNew = (item: IReview) => {
+    setReviews([...reviews, item]);
+  };
+
+  const handleDelete = (id: number) => {
+    if (!id) return;
+    setReviews(reviews.filter((item) => item.id !== id));
+  };
 
   return (
     <View>
@@ -75,6 +87,12 @@ const HomeScreen = (props: any) => {
               >
                 <View style={styles.reviewItem}>
                   <Text>{item.title}</Text>
+                  <AntDesign
+                    name="delete"
+                    size={24}
+                    color="red"
+                    onPress={() => handleDelete(item.id)}
+                  />
                 </View>
               </TouchableOpacity>
             );
@@ -84,6 +102,7 @@ const HomeScreen = (props: any) => {
       <CreateModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
+        addNew={addNew}
       />
     </View>
   );
