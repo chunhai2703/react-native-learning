@@ -8,6 +8,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import CreateModal from "./create.modal";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 interface IReview {
   id: number;
@@ -39,9 +41,29 @@ const HomeScreen = (props: any) => {
       star: 4,
     },
   ]);
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View>
-      <Text style={{ fontSize: 30, padding: 15 }}>Review List: </Text>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: 15,
+        }}
+      >
+        <Text style={{ fontSize: 30 }}>Review List: </Text>
+        <View>
+          <AntDesign
+            name="pluscircleo"
+            size={30}
+            color="orange"
+            onPress={() => setModalVisible(true)}
+          />
+        </View>
+      </View>
+
       <View>
         <FlatList
           data={reviews}
@@ -59,6 +81,10 @@ const HomeScreen = (props: any) => {
           }}
         />
       </View>
+      <CreateModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
     </View>
   );
 };
